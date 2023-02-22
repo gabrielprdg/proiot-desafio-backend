@@ -1,0 +1,28 @@
+version: "3"
+services:
+  mongo:
+    container_name: mongo-container
+    image: mongo:latest
+    restart: always
+    volumes:
+      - mongo_data:/data/db
+    ports:
+      - "27017:27017"
+  api:
+    build: .
+    container_name: proiot_api
+    restart: always
+    command: npm run start
+    volumes:
+      - ./src:/usr/src/proiot/src
+      - ./dist:/usr/src/proiot/dist
+      - ./package.json:/usr/src/proiot/package.json
+    ports:
+      - 8089:8089
+      - 9222:9222
+    env_file:
+      - .env
+    depends_on:
+      - mongo
+volumes:
+  mongo_data:
