@@ -1,4 +1,6 @@
+import { AddDevice } from '../../../../domain/use-cases/device/add-device'
 import {
+	badRequest,
 	ok,
 	serverError
 } from '../../../../presentation/helpers/http/http-helper'
@@ -20,9 +22,29 @@ export class AddDeviceController implements Controller {
 
 	async handle (httpRequest: HttpRequest): Promise<HttpResponse> {
 		try {
-			const deviceRequest = httpRequest.body
+			const error = this.validation.validate(httpRequest.body)
+			if (error) {
+				return badRequest(error)
+			}
 
-			const device = await this.addDevice.add(deviceRequest)
+			const {
+				name,
+				status,
+				description,
+				temperature,
+				humidity,
+				brightness
+			} = httpRequest.body
+
+			const device = await this.addDevice.add({
+				name,
+				status,
+				description,
+				temperature,
+				humidity,
+				brightness,
+				created_at: new Date()
+			})
 
 			return ok(device)
 		} catch (err: any) {

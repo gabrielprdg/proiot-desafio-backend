@@ -1,3 +1,3 @@
-export interface DeleteBeerByIdRepository {
+export interface DeleteDeviceRepository {
   deleteById: (id: string) => Promise<void>
 }

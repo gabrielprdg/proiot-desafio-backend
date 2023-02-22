@@ -1,3 +1,5 @@
+import { DeviceModel } from '../../../domain/models/device'
+
 export interface LoadDevicesRepository {
-  loadAll: () => Promise<any>
+  loadAll: () => Promise<DeviceModel[]>
 }

@@ -1,11 +1,12 @@
+import { DeleteDevice } from '../../../../domain/use-cases/device/delete-device'
 import { noContent, serverError } from '../../../helpers/http/http-helper'
 import { Controller } from '../../../protocols/controller'
 import { HttpRequest, HttpResponse } from '../../../protocols/http'
 
 export class DeleteDeviceController implements Controller {
-	private readonly deleteDevice: DeleteDeviceById
+	private readonly deleteDevice: DeleteDevice
 
-	constructor (deleteDevice: DeleteDeviceById) {
+	constructor (deleteDevice: DeleteDevice) {
 		this.deleteDevice = deleteDevice
 	}
 
@@ -15,7 +16,7 @@ export class DeleteDeviceController implements Controller {
 				id
 			} = httpRequest.params
 
-			await this.deleteDevice.deleteById(id)
+			await this.deleteDevice.delete(id)
 
 			return noContent()
 		} catch (err: any) {
