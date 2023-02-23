@@ -5,35 +5,36 @@ import { LoadDevicesRepository } from '../../../../data/protocols/db/load-device
 import { LoadDeviceByIdRepository } from '../../../../data/protocols/db/load-device-by-id-repository'
 import { UpdateDeviceRepository } from '../../../../data/protocols/db/update-devices-by-id-repository'
 import { DeleteDeviceRepository } from '../../../../data/protocols/db/delete-device-by-id-repository'
+import { DeviceModel } from '../../../../domain/models/device'
 
-export class BeerMongoRepository implements AddDeviceRepository, LoadDevicesRepository, LoadDeviceByIdRepository, UpdateDeviceRepository, DeleteDeviceRepository {
-	async add (beerData: any): Promise<any> {
-		const beerCollection = await mongoHelper.getCollection('beer')
-		const result = await beerCollection.insertOne(beerData)
+export class DeviceMongoRepository implements AddDeviceRepository, LoadDevicesRepository, LoadDeviceByIdRepository, UpdateDeviceRepository, DeleteDeviceRepository {
+	async add (deviceData: any): Promise<any> {
+		const deviceCollection = await mongoHelper.getCollection('device')
+		const result = await deviceCollection.insertOne(deviceData)
 		const insertedId = result.insertedId
-		const beer = await beerCollection.findOne({ _id: insertedId })
-		return mongoHelper.map(beer)
+		const device = await deviceCollection.findOne({ _id: insertedId })
+		return mongoHelper.map(device)
 	}
 
-	async loadAll (): Promise<any[]> {
-		const beerCollection = await mongoHelper.getCollection('beer')
-		const beers = await beerCollection.find().toArray()
-		return mongoHelper.mapCollection(beers)
+	async loadAll (): Promise<DeviceModel[]> {
+		const deviceCollection = await mongoHelper.getCollection('device')
+		const devices = await deviceCollection.find().toArray()
+		return mongoHelper.mapCollection(devices)
 	}
 
-	async loadById (id: string): Promise<any> {
-		const beerCollection = await mongoHelper.getCollection('beer')
-		const beer = await beerCollection.findOne({ _id: new ObjectId(id) })
-		return beer && mongoHelper.map(beer)
+	async loadById (id: string): Promise<DeviceModel> {
+		const deviceCollection = await mongoHelper.getCollection('device')
+		const device = await deviceCollection.findOne({ _id: new ObjectId(id) })
+		return device && mongoHelper.map(device)
 	}
 
-	async update (id: string, beerData: any): Promise<void> {
-		const beerCollection = await mongoHelper.getCollection('beer')
-		await beerCollection.updateOne({ _id: new ObjectId(id) }, { $set: beerData })
+	async update (id: string, deviceData: any): Promise<void> {
+		const deviceCollection = await mongoHelper.getCollection('device')
+		await deviceCollection.updateOne({ _id: new ObjectId(id) }, { $set: deviceData })
 	}
 
 	async deleteById (id: string): Promise<void> {
-		const beerCollection = await mongoHelper.getCollection('beer')
-		await beerCollection.deleteOne({ _id: new ObjectId(id) })
+		const deviceCollection = await mongoHelper.getCollection('device')
+		await deviceCollection.deleteOne({ _id: new ObjectId(id) })
 	}
 }
