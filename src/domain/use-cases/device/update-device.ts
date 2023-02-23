@@ -8,7 +8,7 @@ export type UpdateDeviceParams = {
   brightness?: string
 }
 
-export interface UpdateDeviceById {
+export interface UpdateDevice {
   // to update a device we need both its id and the fields that will be updated
   update: (id: string, DeviceRawData: UpdateDeviceParams) => Promise<void>
 }
