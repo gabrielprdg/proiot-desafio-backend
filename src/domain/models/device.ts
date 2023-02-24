@@ -5,6 +5,6 @@ export type DeviceModel = {
   description: string
   temperature: string
   humidity: string
-  brightness: string
+  brightness: number
   created_at?: Date
 }

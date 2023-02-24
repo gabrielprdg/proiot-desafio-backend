@@ -1,13 +1,15 @@
 version: "3"
+
 services:
   mongo:
-    container_name: mongo-container
+    container_name: mongo_container
     image: mongo:latest
     restart: always
     volumes:
       - mongo_data:/data/db
-    ports:
-      - "27017:27017"
+    networks:
+      - mongo_network
+
   api:
     build: .
     container_name: proiot_api
@@ -18,11 +20,17 @@ services:
       - ./dist:/usr/src/proiot/dist
       - ./package.json:/usr/src/proiot/package.json
     ports:
-      - 8089:8089
-      - 9222:9222
+      - 8081:8081
     env_file:
       - .env
     depends_on:
       - mongo
+    networks:
+      - mongo_network
+
 volumes:
   mongo_data:
+
+networks:
+  mongo_network:
+    driver: bridge

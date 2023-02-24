@@ -5,7 +5,7 @@ export type UpdateDeviceParams = {
   description?: string
   temperature?: string
   humidity?: string
-  brightness?: string
+  brightness?: number
 }
 
 export interface UpdateDevice {
