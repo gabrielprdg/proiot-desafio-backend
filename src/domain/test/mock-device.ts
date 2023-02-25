@@ -1,6 +1,6 @@
 import { DeviceModel } from '../models/device'
-import { AddDeviceParams } from '../../domain/use-cases/device/add-device'
-import { UpdateDeviceParams } from '../../domain/use-cases/device/update-device'
+import { AddDeviceParams } from '../use-cases/device/add-device'
+import { UpdateDeviceParams } from '../use-cases/device/update-device'
 
 export const mockDeviceModel = (): DeviceModel => ({
 	name: 'any_name',

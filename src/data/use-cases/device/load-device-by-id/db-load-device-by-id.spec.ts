@@ -1,7 +1,7 @@
 import { LoadDeviceByIdRepository } from '../../../../data/protocols/db/load-device-by-id-repository'
-import { mockLoadDeviceByIdRepository } from '../../../../data/test/mock-db-beer'
+import { mockLoadDeviceByIdRepository } from '../../../test/mock-db-device'
 import { throwError } from '../../../../data/test/test-helper'
-import { mockDeviceModel } from '../../../../domain/test/mock-beer'
+import { mockDeviceModel } from '../../../../domain/test/mock-device'
 import mockdate from 'mockdate'
 import { DbLoadDeviceById } from './db-load-device-by-id'
 
@@ -28,20 +28,20 @@ describe('DbLoadDeviceById Usecase', () => {
 	afterAll(() => {
 		mockdate.reset()
 	})
-	test('Should call LoadDeviceByIdRepository with correct values', async () => {
+	it('Should call LoadDeviceByIdRepository with correct values', async () => {
 		const { sut, LoadDeviceByIdRepositoryStub } = makeSut()
 		const addSpy = jest.spyOn(LoadDeviceByIdRepositoryStub, 'loadById')
 		await sut.loadById('any_id')
 		expect(addSpy).toHaveBeenCalledWith('any_id')
 	})
 
-	test('Should return a Device on success ', async () => {
+	it('Should return a Device on success ', async () => {
 		const { sut } = makeSut()
 		const Device = await sut.loadById('any_id')
 		expect(Device).toEqual(mockDeviceModel())
 	})
 
-	test('Should throws if LoadDeviceByIdRepository throws', async () => {
+	it('Should throws if LoadDeviceByIdRepository throws', async () => {
 		const { sut, LoadDeviceByIdRepositoryStub } = makeSut()
 		jest.spyOn(LoadDeviceByIdRepositoryStub, 'loadById').mockImplementationOnce(throwError)
 

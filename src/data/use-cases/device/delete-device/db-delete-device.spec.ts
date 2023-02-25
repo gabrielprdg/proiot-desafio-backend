@@ -1,5 +1,5 @@
 import { DeleteDeviceRepository } from '../../../../data/protocols/db/delete-device-by-id-repository'
-import { mockDeleteDeviceRepository } from '../../../../data/test/mock-db-beer'
+import { mockDeleteDeviceRepository } from '../../../test/mock-db-device'
 import { throwError } from '../../../../data/test/test-helper'
 import { DbDeleteDevice } from './db-delete-device'
 import mockdate from 'mockdate'
@@ -28,14 +28,14 @@ describe('DbDeleteDevice Usecase', () => {
 	afterAll(() => {
 		mockdate.reset()
 	})
-	test('Should call DeleteDeviceRepository with correct values', async () => {
+	it('Should call DeleteDeviceRepository with correct values', async () => {
 		const { sut, deleteDeviceRepositoryStub } = makeSut()
 		const addSpy = jest.spyOn(deleteDeviceRepositoryStub, 'deleteById')
 		await sut.delete('any_id')
 		expect(addSpy).toHaveBeenCalledWith('any_id')
 	})
 
-	test('Should throws if DeleteDeviceRepository throws', async () => {
+	it('Should throws if DeleteDeviceRepository throws', async () => {
 		const { sut, deleteDeviceRepositoryStub } = makeSut()
 		jest.spyOn(deleteDeviceRepositoryStub, 'deleteById').mockImplementationOnce(throwError)
 

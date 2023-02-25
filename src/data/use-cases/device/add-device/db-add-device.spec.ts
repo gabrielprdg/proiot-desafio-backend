@@ -1,10 +1,10 @@
 import { AddDeviceRepository } from '../../../../data/protocols/db/add-device-repository'
-import { mockAddDeviceRepository } from '../../../../data/test/mock-db-beer'
+import { mockAddDeviceRepository } from '../../../test/mock-db-device'
 import { throwError } from '../../../../data/test/test-helper'
 import {
 	mockAddDeviceParams,
 	mockDeviceModel
-} from '../../../../domain/test/mock-beer'
+} from '../../../../domain/test/mock-device'
 import { DbAddDevice } from './db-add-device'
 import mockdate from 'mockdate'
 
