@@ -1,3 +1,4 @@
+import { io } from '../../../../main/config/app'
 import { UpdateDevice } from '../../../../domain/use-cases/device/update-device'
 import { noContent, serverError } from '../../../helpers/http/http-helper'
 import { Controller } from '../../../protocols/controller'
@@ -17,9 +18,9 @@ export class UpdateDeviceController implements Controller {
 			} = httpRequest.params
 
 			const deviceCreateRequest = httpRequest.body
-			console.log(deviceCreateRequest)
 			await this.updateDevice.update(id, deviceCreateRequest)
 
+			io.emit('some-event', { someProperty: 'some value', otherProperty: 'other value' })
 			return noContent()
 		} catch (err: any) {
 			return serverError(err)

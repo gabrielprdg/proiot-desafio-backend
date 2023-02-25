@@ -9,16 +9,18 @@ const app = express()
 const server = http.createServer(app)
 const io = new Server(server)
 
-io.on('connection', (socket) => {
-	console.log(`Socket ${socket.id} connected`)
-
-	// enviar mensagem para o cliente conectado
-	socket.emit('message', 'Hello from server!')
-})
-
 app.use(cors())
 app.use(json())
 
+io.on('connection', (socket) => {
+	console.log('Um cliente conectou')
+
+	// Define um handler de eventos para o evento 'disconnect'
+	socket.on('disconnect', () => {
+		console.log('Um cliente desconectou')
+	})
+})
+
 setupRoutes(app)
 
-export default app
+export { server, io }
