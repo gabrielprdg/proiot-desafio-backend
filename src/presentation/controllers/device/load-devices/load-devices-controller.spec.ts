@@ -1,10 +1,10 @@
-import { throwError } from 'data/test/test-helper'
-import { mockDevices } from 'domain/test/mock-device'
-import { LoadDevices } from 'domain/use-cases/device/load-devices'
-import mockdate from 'mockdate'
-import { noContent, ok, serverError } from 'presentation/helpers/http/http-helper'
-import { mockLoadDevices } from 'presentation/test'
+import { throwError } from '../../../../data/test/test-helper'
+import { mockDevices } from '../../../../domain/test/mock-device'
+import { LoadDevices } from '../../../../domain/use-cases/device/load-devices'
+import { noContent, ok, serverError } from '../../../../presentation/helpers/http/http-helper'
+import { mockLoadDevices } from '../../../../presentation/test'
 import { LoadDevicesController } from './load-devices-controller'
+import mockdate from 'mockdate'
 
 type SutTypes = {
   sut: LoadDevicesController

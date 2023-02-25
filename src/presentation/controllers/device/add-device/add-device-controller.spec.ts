@@ -1,11 +1,11 @@
-import { AddDevice } from 'domain/use-cases/device/add-device'
-import mockdate from 'mockdate'
+import { AddDevice } from '../../../../domain/use-cases/device/add-device'
 import { throwError } from '../../../../data/test/test-helper'
 import { mockDeviceModel } from '../../../../domain/test/mock-device'
 import { badRequest, ok, serverError } from '../../../../presentation/helpers/http/http-helper'
 import { mockAddDevice, mockValidation } from '../../../../presentation/test'
 import { HttpRequest, Validation } from '../../../protocols'
 import { AddDeviceController } from './add-device-controller'
+import mockdate from 'mockdate'
 
 const makeFakeRequest = (): HttpRequest => ({
 	body: {
@@ -14,7 +14,8 @@ const makeFakeRequest = (): HttpRequest => ({
 		description: 'any_description',
 		temperature: 'any_temperature',
 		humidity: 'any_humidity',
-		brightness: 500
+		brightness: 500,
+		created_at: new Date()
 	}
 })
 

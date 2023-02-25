@@ -17,10 +17,10 @@ export class UpdateDeviceController implements Controller {
 				id
 			} = httpRequest.params
 
-			const deviceCreateRequest = httpRequest.body
-			await this.updateDevice.update(id, deviceCreateRequest)
+			const deviceUpdateRequest = httpRequest.body
+			await this.updateDevice.update(id, deviceUpdateRequest)
 
-			io.emit('some-event', { someProperty: 'some value', otherProperty: 'other value' })
+			io.emit('some-event', { id, deviceUpdateRequest })
 			return noContent()
 		} catch (err: any) {
 			return serverError(err)

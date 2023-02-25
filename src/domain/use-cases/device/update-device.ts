@@ -10,5 +10,5 @@ export type UpdateDeviceParams = {
 
 export interface UpdateDevice {
   // to update a device we need both its id and the fields that will be updated
-  update: (id: string, DeviceRawData: UpdateDeviceParams) => Promise<void>
+  update: (id: string, deviceRawData: UpdateDeviceParams) => Promise<void>
 }
