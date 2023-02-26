@@ -1,0 +1,72 @@
+[
+  {
+      "name": "Drone",
+      "status": "ativo",
+      "description": "Drone voador ultima geração",
+      "temperature": "15ºC",
+      "humidity": "23%",
+      "brightness": 500,
+      "created_at": "2023-02-24T03:58:40.966Z",
+      "id": "63f835f0a9fac6a60f19f7c7"
+  },
+  {
+      "name": "Termostato Inteligente",
+      "status": "ativo",
+      "description": "Dispositivo para controle de temperatura ambiente",
+      "temperature": "23ºC",
+      "humidity": "40%",
+      "brightness": 34,
+      "created_at": "2023-02-24T04:01:53.954Z",
+      "id": "63f836b1a9fac6a60f19f7c8"
+  },
+  {
+      "name": "Câmera de monitoramento interno",
+      "status": "ativo",
+      "description": "Câmera de monitoramento interno para segurança",
+      "temperature": "24ºC",
+      "humidity": "65%",
+      "brightness": 500,
+      "created_at": "2023-02-24T04:08:00.009Z",
+      "id": "63f83820a9fac6a60f19f7c9"
+  },
+  {
+      "name": "Sensor de nível de água",
+      "status": "ativo",
+      "description": "Sensor de nível de água para controle de enchentes",
+      "temperature": "21ºC",
+      "humidity": "75%",
+      "brightness": 300,
+      "created_at": "2023-02-24T04:08:16.436Z",
+      "id": "63f83830a9fac6a60f19f7ca"
+  },
+  {
+      "name": "Dispositivo de monitoramento de umidade do solo",
+      "status": "inativo",
+      "description": "Dispositivo de monitoramento de umidade do solo para agricultura",
+      "temperature": "13ºC",
+      "humidity": "80%",
+      "brightness": 100,
+      "created_at": "2023-02-24T04:19:45.803Z",
+      "id": "63f83ae1a9fac6a60f19f7cb"
+  },
+  {
+      "name": "Dispositivo de medição de energia elétrica",
+      "status": "ativo",
+      "description": "Dispositivo de medição de energia elétrica para redução de consumo",
+      "temperature": "22ºC",
+      "humidity": "75%",
+      "brightness": 400,
+      "created_at": "2023-02-24T04:20:02.031Z",
+      "id": "63f83af2a9fac6a60f19f7cc"
+  },
+  {
+      "name": "Sensor de gás",
+      "status": "inativo",
+      "description": "Sensor de gás para detecção de vazamentos",
+      "temperature": "12ºC",
+      "humidity": "55%",
+      "brightness": 150,
+      "created_at": "2023-02-24T04:41:01.206Z",
+      "id": "63f83fdda9fac6a60f19f7cd"
+  }
+]
